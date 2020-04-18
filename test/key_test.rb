@@ -16,7 +16,6 @@ class KeyTest < Minitest::Test
   end
 
   def test_can_generate_random_number
-
     num = @key.generate_random_num
 
     assert_equal true, num.to_i < 100000
@@ -37,6 +36,11 @@ class KeyTest < Minitest::Test
   def test_date
     Date.expects(:today).returns(Date.new(2020, 04, 18))
 
-    assert_equal "04-18-20", @key.date
+    assert_equal "041820", @key.date
+  end
+
+  def test_create_offsets
+
+
   end
 end

@@ -19,6 +19,6 @@ class Key
   end
 
   def date
-    Date.today.strftime("%m-%d-%y")
+    Date.today.strftime("%m%d%y")
   end
 end
