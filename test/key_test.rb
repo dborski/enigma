@@ -40,7 +40,13 @@ class KeyTest < Minitest::Test
   end
 
   def test_create_offsets
+    @key.expects(:date).returns("041820")
 
+    expected = {A: 2,
+                B: 4,
+                C: 0,
+                D: 0}
 
+    assert_equal expected, @key.create_offsets
   end
 end
