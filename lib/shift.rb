@@ -1,4 +1,4 @@
-class Key
+class Shift
 
   def generate_random_num
     rand(0..99999).to_s.rjust(5, "0")
@@ -10,11 +10,14 @@ class Key
 
   def create_keys
     num = generate_random_num
+    key_date = date
     split_num = num.split(//)
     {A: split_num[0..1].join.to_i,
      B: split_num[1..2].join.to_i,
      C: split_num[2..3].join.to_i,
-     D: split_num[3..4].join.to_i}
+     D: split_num[3..4].join.to_i,
+     key: num,
+     date: key_date}
   end
 
   def create_offsets
