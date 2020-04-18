@@ -22,4 +22,15 @@ class KeyTest < Minitest::Test
     assert_equal true, num.to_i < 100000
     assert_equal 5, @key.generate_random_num.length
   end
+
+  def test_create_keys
+    @key.expects(:generate_random_num).returns("15794")
+
+    expected = {"A" => 15,
+                "B" => 57,
+                "C" => 79,
+                "D" => 94}
+
+    assert_equal expected, @key.create_keys
+  end
 end
