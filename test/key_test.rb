@@ -26,10 +26,10 @@ class KeyTest < Minitest::Test
   def test_create_keys
     @key.expects(:generate_random_num).returns("15794")
 
-    expected = {"A" => 15,
-                "B" => 57,
-                "C" => 79,
-                "D" => 94}
+    expected = {A: 15,
+                B: 57,
+                C: 79,
+                D: 94}
 
     assert_equal expected, @key.create_keys
   end
