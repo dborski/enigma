@@ -49,4 +49,16 @@ class KeyTest < Minitest::Test
 
     assert_equal expected, @key.create_offsets
   end
+
+  def test_creates_shift
+    @key.expects(:create_keys).returns({A: 15, B: 57, C: 79, D: 94})
+    @key.expects(:create_offsets).returns({A: 2, B: 4, C: 0, D: 0})
+
+    expected = {A: 17,
+                B: 61,
+                C: 79,
+                D: 94}
+
+    assert_equal expected, @key.create_shift
+  end
 end
