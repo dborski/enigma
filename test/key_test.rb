@@ -4,15 +4,11 @@ require './lib/key.rb'
 class KeyTest < Minitest::Test
 
   def setup
-    @key = Key.new("01234")
+    @key = Key.new
   end
 
   def test_it_exists
     assert_instance_of Key, @key
-  end
-
-  def test_has_readable_attributes
-    assert_equal "01234", @key.number
   end
 
   def test_can_generate_random_number

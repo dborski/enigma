@@ -1,10 +1,5 @@
 class Key
 
-  attr_reader :number
-  def initialize(number = generate_random_num)
-    @number = number
-  end
-
   def generate_random_num
     rand(0..99999).to_s.rjust(5, "0")
   end
@@ -21,7 +16,7 @@ class Key
      C: split_num[2..3].join.to_i,
      D: split_num[3..4].join.to_i}
   end
-  
+
   def create_offsets
     offset_num = (date.to_i ** 2).to_s
     last_four = offset_num.split(//).last(4).join("")
