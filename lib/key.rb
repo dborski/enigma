@@ -17,4 +17,8 @@ class Key
      C: split_num[2..3].join.to_i,
      D: split_num[3..4].join.to_i}
   end
+
+  def date
+    Date.today.strftime("%m-%d-%y")
+  end
 end

@@ -33,4 +33,10 @@ class KeyTest < Minitest::Test
 
     assert_equal expected, @key.create_keys
   end
+
+  def test_date
+    Date.expects(:today).returns(Date.new(2020, 04, 18))
+
+    assert_equal "04-18-20", @key.date
+  end
 end
