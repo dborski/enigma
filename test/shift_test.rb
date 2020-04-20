@@ -11,8 +11,6 @@ class KeyTest < Minitest::Test
     assert_instance_of Shift, @shift
   end
 
-
-
   def test_create_keys
     expected = {A: 15,
                 B: 57,
@@ -21,8 +19,6 @@ class KeyTest < Minitest::Test
 
     assert_equal expected, Shift.create_keys("15794", "041820")
   end
-
-
 
   def test_create_offsets
     expected = {A: 2,
