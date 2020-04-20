@@ -13,6 +13,4 @@ writer = File.open(ARGV[1], "w")
 writer.write(message_to_write)
 writer.close
 
-
-
-require "pry"; binding.pry
+puts "Created '#{ARGV[1]}' with the key #{decrypted_message[:key]} and date #{decrypted_message[:date]}"
