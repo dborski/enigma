@@ -1,4 +1,5 @@
 require './lib/shift'
+require 'date'
 
 class Enigma
 
