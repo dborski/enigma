@@ -1,4 +1,5 @@
 require_relative 'enigma'
+require 'date'
 
 text = File.open(ARGV[0], "r")
 message = text.read
@@ -11,4 +12,9 @@ writer = File.open(ARGV[1], "w")
 writer.write(message_to_write)
 writer.close
 
-puts "Created '#{ARGV[1]}' with the key #{encrypted_message[:key]} and date #{encrypted_message[:date]}"
+date = encrypted_message[:date]
+new_date = date.gsub(/(.{2})(?=.)/, '\1-\2')
+date_obj = Date.strptime(new_date,'%m-%d-%y')
+written_date = date_obj.strftime("%d%m%y")
+
+puts "Created '#{ARGV[1]}' with the key #{encrypted_message[:key]} and date #{written_date}"
