@@ -2,9 +2,8 @@ require './lib/shift'
 
 class Enigma
 
-  attr_reader :character_set
-  def initialize
-    @character_set = ("a".."z").to_a << " "
+  def character_set
+    ("a".."z").to_a << " "
   end
 
   def shift_values
@@ -21,7 +20,7 @@ class Enigma
 
   def encrypt(message)
     truncated_shift = shift_values.slice(:A, :B, :C, :D)
-    all_characters = ("a".."z").to_a << " "
+    all_characters = character_set
 
     encrypted_message = message.downcase.chars.map.with_index do |letter, index|
       if all_characters.any? { |character| character == letter}
