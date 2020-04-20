@@ -24,8 +24,28 @@ class EnigmaTest < Minitest::Test
     assert_equal 6, @enigma.shift_values.length
   end
 
-  def test_can_split_message
-    assert_equal [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"]], @enigma.split_message("HELLO WORLD!")
+  def test_key
+    stub_value = {A: 17,
+                B: 61,
+                C: 79,
+                D: 94,
+                key: "15794",
+                date: "041820"}
+    @enigma.expects(:shift_values).returns(stub_value)
+
+    assert_equal ({key: "15794"}), @enigma.key
+  end
+
+  def test_date
+    stub_value = {A: 17,
+                B: 61,
+                C: 79,
+                D: 94,
+                key: "15794",
+                date: "041820"}
+    @enigma.expects(:shift_values).returns(stub_value)
+
+    assert_equal ({date: "041820"}), @enigma.date
   end
 
   def test_can_encrypt_message
@@ -36,11 +56,13 @@ class EnigmaTest < Minitest::Test
                 key: "15794",
                 date: "041820"}
     @enigma.expects(:shift_values).returns(stub_value)
+    @enigma.expects(:key).returns({key: "15794"})
+    @enigma.expects(:date).returns({date: "041820"})
 
-    expected = {encyption: "yljyeguahsb!",
+    expected = {encryption: "yljyeguahsb",
                 key: "15794",
                 date: "041820"}
 
-    assert_equal expected, @enigma.encrypt('HELLO WORLD!')
+    assert_equal expected, @enigma.encrypt('HELLO WORLD')
   end
 end

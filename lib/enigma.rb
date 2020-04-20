@@ -2,18 +2,24 @@ require './lib/shift'
 
 class Enigma
 
-  attr_reader :character_set, :shift_values
+  attr_reader :character_set
   def initialize
     @character_set = ("a".."z").to_a << " "
-    @shift_values = Shift.new.create_shift
   end
 
-  def split_message(message)
-    message.chars.each_slice(4).to_a.map do |segment|
-      segment.map { |character| character.downcase}
-    end
+  def shift_values
+    Shift.new.create_shift
+  end
+
+  def key
+    shift_values.slice(:key)
+  end
+
+  def date
+    shift_values.slice(:date)
   end
 
   def encrypt(message)
+
   end
 end
