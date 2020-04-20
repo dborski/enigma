@@ -25,7 +25,6 @@ class KeyTest < Minitest::Test
 
 
   def test_create_offsets
-
     expected = {A: 2,
                 B: 4,
                 C: 0,
@@ -35,7 +34,6 @@ class KeyTest < Minitest::Test
   end
 
   def test_creates_shift
-
     expected = {A: 17,
                 B: 61,
                 C: 79,
