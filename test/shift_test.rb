@@ -20,6 +20,7 @@ class KeyTest < Minitest::Test
 
   def test_create_keys
     @shift.expects(:generate_random_num).returns("15794")
+    @shift.expects(:date).returns("041820")
 
     expected = {A: 15,
                 B: 57,
