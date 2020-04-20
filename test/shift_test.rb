@@ -1,7 +1,7 @@
 require './test/test_helper'
 require './lib/shift.rb'
 
-class KeyTest < Minitest::Test
+class ShiftTest < Minitest::Test
 
   def setup
     @shift = Shift.new
