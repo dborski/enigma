@@ -43,4 +43,15 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, @enigma.encrypt('HELLO WORLD!')
   end
+
+  def test_can_decrypt_message
+
+    @enigma.expects(:date_today).returns("041820")
+
+    expected = {decryption: "hello world!",
+                key: "15794",
+                date: "041820"}
+
+    assert_equal expected, @enigma.decrypt("yljyeguahsb!", "15794")
+  end
 end
