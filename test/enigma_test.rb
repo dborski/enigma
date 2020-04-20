@@ -59,10 +59,10 @@ class EnigmaTest < Minitest::Test
     @enigma.expects(:key).returns({key: "15794"})
     @enigma.expects(:date).returns({date: "041820"})
 
-    expected = {encryption: "yljyeguahsb",
+    expected = {encryption: "yljyeguahsb!",
                 key: "15794",
                 date: "041820"}
 
-    assert_equal expected, @enigma.encrypt('HELLO WORLD')
+    assert_equal expected, @enigma.encrypt('HELLO WORLD!')
   end
 end

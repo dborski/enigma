@@ -20,6 +20,21 @@ class Enigma
   end
 
   def encrypt(message)
+    truncated_shift = shift_values.slice(:A, :B, :C, :D)
+    all_characters = ("a".."z").to_a << " "
 
+    encrypted_message = message.downcase.chars.map.with_index do |letter, index|
+      if all_characters.any? { |character| character == letter}
+        shift = all_characters.find_index(letter) + truncated_shift.values[index % truncated_shift.length]
+        all_characters[shift % all_characters.length]
+      else
+        letter
+      end
+    end.join
+
+    {encryption: encrypted_message,
+     key:        key[:key],
+     date:       date[:date]
+    }
   end
 end
