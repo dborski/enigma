@@ -1,26 +1,14 @@
 class Shift
 
-  def generate_random_num
-    rand(5 ** 5).to_s.rjust(5, "0")
-  end
-
-  def date
-    Date.today.strftime("%m%d%y")
-  end
-
-  def create_keys
-    num = generate_random_num
-    key_date = date
-    split_num = num.split(//)
+  def self.create_keys(key, date)
+    split_num = key.split(//)
     {A: split_num[0..1].join.to_i,
      B: split_num[1..2].join.to_i,
      C: split_num[2..3].join.to_i,
-     D: split_num[3..4].join.to_i,
-     key: num,
-     date: key_date}
+     D: split_num[3..4].join.to_i,}
   end
 
-  def create_offsets
+  def self.create_offsets(key, date)
     offset_num = (date.to_i ** 2).to_s
     last_four = offset_num.split(//).last(4).join("")
     {A: last_four[0].to_i,
@@ -29,7 +17,7 @@ class Shift
      D: last_four[3].to_i}
   end
 
-  def create_shift
-    create_keys.merge(create_offsets) { |key, old_val, new_val| old_val + new_val }
+  def self.create_shift(key, date)
+    create_keys(key, date).merge(create_offsets(key, date)) { |key, old_val, new_val| old_val + new_val }
   end
 end
