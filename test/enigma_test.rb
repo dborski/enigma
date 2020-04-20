@@ -19,45 +19,23 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.character_set
   end
 
-  def test_shift_values
-    assert_instance_of Hash, @enigma.shift_values
-    assert_equal 6, @enigma.shift_values.length
-  end
+  def test_can_generate_random_number
+    num = @enigma.generate_random_num
 
-  def test_key
-    stub_value = {A: 17,
-                B: 61,
-                C: 79,
-                D: 94,
-                key: "15794",
-                date: "041820"}
-    @enigma.expects(:shift_values).returns(stub_value)
-
-    assert_equal ({key: "15794"}), @enigma.key
+    assert_equal true, num.to_i < 100000
+    assert_equal 5, @enigma.generate_random_num.length
   end
 
   def test_date
-    stub_value = {A: 17,
-                B: 61,
-                C: 79,
-                D: 94,
-                key: "15794",
-                date: "041820"}
-    @enigma.expects(:shift_values).returns(stub_value)
+    Date.expects(:today).returns(Date.new(2020, 04, 18))
 
-    assert_equal ({date: "041820"}), @enigma.date
+    assert_equal "041820", @enigma.date_today
   end
 
   def test_can_encrypt_message
-    stub_value = {A: 17,
-                B: 61,
-                C: 79,
-                D: 94,
-                key: "15794",
-                date: "041820"}
-    @enigma.expects(:shift_values).returns(stub_value)
-    @enigma.expects(:key).returns({key: "15794"})
-    @enigma.expects(:date).returns({date: "041820"})
+
+    @enigma.expects(:generate_random_num).returns("15794")
+    @enigma.expects(:date_today).returns("041820")
 
     expected = {encryption: "yljyeguahsb!",
                 key: "15794",
