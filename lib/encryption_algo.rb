@@ -15,13 +15,27 @@ class EncryptionAlgo
     ("a".."z").to_a << " "
   end
 
-  def encrypt_message(message, key, date)
+  def encrypt_message(message, key = generate_random_num, date = date_today)
     shift_values = Shift.create_shift(key, date)
     all_characters = character_set
 
     message.downcase.chars.map.with_index do |letter, index|
       if all_characters.any? { |character| character == letter}
         shift = all_characters.find_index(letter) + shift_values.values[index % shift_values.length]
+        all_characters[shift % all_characters.length]
+      else
+        letter
+      end
+    end.join
+  end
+
+  def decrypt_message(message, key, date = date_today)
+    shift_values = Shift.create_shift(key, date)
+    all_characters = character_set
+
+    message.downcase.chars.map.with_index do |letter, index|
+      if all_characters.any? { |character| character == letter}
+        shift = all_characters.find_index(letter) - shift_values.values[index % shift_values.length]
         all_characters[shift % all_characters.length]
       else
         letter
