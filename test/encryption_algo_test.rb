@@ -33,14 +33,9 @@ class EncryptionAlgoTest < Minitest::Test
   end
 
   def test_can_encrypt_message
-
     @encryption_algo.expects(:generate_random_num).returns("15794")
     @encryption_algo.expects(:date_today).returns("041820")
 
-    expected = {encryption: "yljyeguahsb!",
-                key: "15794",
-                date: "041820"}
-
-    assert_equal expected, @encryption_algo.encrypt_message('HELLO WORLD!')
+    assert_equal "yljyeguahsb!", @encryption_algo.encrypt_message('HELLO WORLD!')
   end
 end

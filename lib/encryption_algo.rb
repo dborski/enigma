@@ -19,7 +19,7 @@ class EncryptionAlgo
     shift_values = Shift.create_shift(key, date)
     all_characters = character_set
 
-    encrypted_message = message.downcase.chars.map.with_index do |letter, index|
+    message.downcase.chars.map.with_index do |letter, index|
       if all_characters.any? { |character| character == letter}
         shift = all_characters.find_index(letter) + shift_values.values[index % shift_values.length]
         all_characters[shift % all_characters.length]
@@ -27,10 +27,10 @@ class EncryptionAlgo
         letter
       end
     end.join
-
-    {encryption: encrypted_message,
-     key:        key,
-     date:       date
-    }
+    #
+    # {encryption: encrypted_message,
+    #  key:        key,
+    #  date:       date
+    # }
   end
 end
