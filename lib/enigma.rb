@@ -1,7 +1,8 @@
 require './lib/shift'
+require './encryption_algo'
 require 'date'
 
-class Enigma
+class Enigma < EncryptionAlgo
 
   def generate_random_num
     rand(5 ** 5).to_s.rjust(5, "0")
