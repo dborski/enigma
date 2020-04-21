@@ -1,5 +1,4 @@
 require_relative 'test_helper'
-require './lib/shift'
 require './lib/cipher_algo'
 
 class CipherAlgoTest < Minitest::Test
