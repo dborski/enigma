@@ -38,4 +38,10 @@ class EncryptionAlgoTest < Minitest::Test
 
     assert_equal "yljyeguahsb!", @encryption_algo.encrypt_message('HELLO WORLD!')
   end
+
+  def test_can_decrypt_message
+    @enigma.expects(:date_today).returns("041820")
+
+    assert_equal "hello world!", @enigma.decrypt("yljyeguahsb!", "15794")
+  end
 end
