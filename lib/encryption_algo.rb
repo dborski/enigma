@@ -15,7 +15,7 @@ class EncryptionAlgo
     ("a".."z").to_a << " "
   end
 
-  def encrypt_message(message, key = generate_random_num, date = date_today)
+  def encrypt_message(message, key, date)
     shift_values = Shift.create_shift(key, date)
     all_characters = character_set
 
@@ -27,10 +27,5 @@ class EncryptionAlgo
         letter
       end
     end.join
-    #
-    # {encryption: encrypted_message,
-    #  key:        key,
-    #  date:       date
-    # }
   end
 end
