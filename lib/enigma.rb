@@ -1,4 +1,3 @@
-require_relative 'shift'
 require_relative 'cipher_algo'
 require 'date'
 
