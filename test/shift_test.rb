@@ -3,14 +3,6 @@ require './lib/shift.rb'
 
 class ShiftTest < Minitest::Test
 
-  def setup
-    @shift = Shift.new
-  end
-
-  def test_it_exists
-    assert_instance_of Shift, @shift
-  end
-
   def test_create_keys
     expected = {A: 15,
                 B: 57,
