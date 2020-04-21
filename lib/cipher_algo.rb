@@ -1,4 +1,4 @@
-require './lib/shift'
+require_relative 'shift'
 require 'date'
 
 class CipherAlgo

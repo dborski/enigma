@@ -1,6 +1,6 @@
-require './test/test_helper'
-require './lib/shift.rb'
-require './lib/cipher_algo.rb'
+require_relative 'test_helper'
+require './lib/shift'
+require './lib/cipher_algo'
 
 class CipherAlgoTest < Minitest::Test
 

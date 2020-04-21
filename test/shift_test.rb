@@ -1,5 +1,5 @@
-require './test/test_helper'
-require './lib/shift.rb'
+require_relative 'test_helper'
+require './lib/shift'
 
 class ShiftTest < Minitest::Test
 
