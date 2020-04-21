@@ -19,10 +19,9 @@ class CipherAlgoTest < Minitest::Test
   end
 
   def test_can_generate_random_number
-    num = @cipher_algo.generate_random_num
+    @cipher_algo.expects(:rand).returns(45)
 
-    assert_equal true, num.to_i < 100000
-    assert_equal 5, @cipher_algo.generate_random_num.length
+    assert_equal "00045", @cipher_algo.generate_random_num
   end
 
   def test_date
