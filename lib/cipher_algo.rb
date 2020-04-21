@@ -20,7 +20,7 @@ class CipherAlgo
     all_characters = character_set
 
     message.downcase.chars.map.with_index do |letter, index|
-      if all_characters.any? { |character| character == letter}
+      if all_characters.any? { |character| character == letter }
         shift = all_characters.find_index(letter) + shift_values.values[index % shift_values.length]
         all_characters[shift % all_characters.length]
       else
@@ -34,7 +34,7 @@ class CipherAlgo
     all_characters = character_set
 
     message.downcase.chars.map.with_index do |letter, index|
-      if all_characters.any? { |character| character == letter}
+      if all_characters.any? { |character| character == letter }
         shift = all_characters.find_index(letter) - shift_values.values[index % shift_values.length]
         all_characters[shift % all_characters.length]
       else
