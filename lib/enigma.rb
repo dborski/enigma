@@ -1,5 +1,4 @@
 require_relative 'cipher_algo'
-require 'date'
 
 class Enigma < CipherAlgo
 
