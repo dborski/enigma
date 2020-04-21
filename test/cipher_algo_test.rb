@@ -18,13 +18,13 @@ class CipherAlgoTest < Minitest::Test
     assert_equal expected, @cipher_algo.character_set
   end
 
-  def test_can_generate_random_number
+  def test_can_generate_random_number_with_leading_zeroes
     @cipher_algo.expects(:rand).returns(45)
 
     assert_equal "00045", @cipher_algo.generate_random_num
   end
 
-  def test_date
+  def test_can_generate_properly_formatted_todays_date
     Date.expects(:today).returns(Date.new(2020, 04, 18))
 
     assert_equal "041820", @cipher_algo.date_today
