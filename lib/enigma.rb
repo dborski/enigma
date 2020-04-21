@@ -1,8 +1,6 @@
-require_relative 'shift'
-require_relative 'encryption_algo'
-require 'date'
+require_relative 'cipher_algo'
 
-class Enigma < EncryptionAlgo
+class Enigma < CipherAlgo
 
   def encrypt(message, key = generate_random_num, date = date_today)
     encrypted_message = encrypt_message(message, key, date)

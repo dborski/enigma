@@ -1,6 +1,5 @@
-require './test/test_helper'
+require_relative 'test_helper'
 require './lib/enigma'
-require './lib/shift'
 
 class EnigmaTest < Minitest::Test
 

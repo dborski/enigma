@@ -1,7 +1,7 @@
-require './lib/shift'
+require_relative 'shift'
 require 'date'
 
-class EncryptionAlgo
+class CipherAlgo
 
   def generate_random_num
     rand(5 ** 5).to_s.rjust(5, "0")
@@ -20,7 +20,7 @@ class EncryptionAlgo
     all_characters = character_set
 
     message.downcase.chars.map.with_index do |letter, index|
-      if all_characters.any? { |character| character == letter}
+      if all_characters.any? { |character| character == letter }
         shift = all_characters.find_index(letter) + shift_values.values[index % shift_values.length]
         all_characters[shift % all_characters.length]
       else
@@ -34,7 +34,7 @@ class EncryptionAlgo
     all_characters = character_set
 
     message.downcase.chars.map.with_index do |letter, index|
-      if all_characters.any? { |character| character == letter}
+      if all_characters.any? { |character| character == letter }
         shift = all_characters.find_index(letter) - shift_values.values[index % shift_values.length]
         all_characters[shift % all_characters.length]
       else
